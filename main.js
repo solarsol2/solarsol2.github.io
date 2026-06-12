@@ -13,14 +13,12 @@ const navLinks  = document.querySelector('.nav-links');
 
 navToggle.addEventListener('click', () => {
   nav.classList.toggle('menu-open');
-  document.body.style.overflow = nav.classList.contains('menu-open') ? 'hidden' : '';
 });
 
 // Close mobile nav when a link is clicked
 navLinks.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     nav.classList.remove('menu-open');
-    document.body.style.overflow = '';
   });
 });
 
