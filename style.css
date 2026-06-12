@@ -381,24 +381,28 @@ ul  { list-style: none; }
 }
 
 .project-logo {
-  height: 44px;
-  width: auto;
-  max-width: 140px;
+  height: auto;
+  max-height: 48px;
+  max-width: 96px;
   object-fit: contain;
   object-position: center;
   margin-top: 16px;
 }
 
-/* 이감/경찰서 — CUNI 워드마크와 시각적 균형 (정방형 512×512 → 중앙 아이콘) */
+/* 이감 — 정방형 아이콘, 팍팍 키움 */
 .project-logo--square {
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
+  max-height: unset;
+  max-width: unset;
   object-fit: contain;
 }
 
 .project-logo--circle {
-  height: 100px;
-  width: 100px;
+  height: 68px;
+  width: 68px;
+  max-height: unset;
+  max-width: unset;
   object-fit: contain;
 }
 
@@ -941,20 +945,42 @@ ul  { list-style: none; }
 /* ================================================================
    MOBILE NAV
    ================================================================ */
+/* ================================================================
+   MOBILE NAV — corner dropdown
+   ================================================================ */
+#nav { position: relative; }
+
 #nav.menu-open .nav-links {
   display: flex;
   flex-direction: column;
-  position: fixed;
-  inset: 0;
-  background: rgba(10,10,10,0.98);
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 180px;
+  background: rgba(18,18,18,0.98);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-top: none;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0;
   z-index: 800;
+  padding: 6px 0;
 }
 
-#nav.menu-open .nav-links a { font-size: 1.2rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.7); }
-#nav.menu-open .nav-links a:hover { color: var(--white-pure); }
+#nav.menu-open .nav-links a {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.62);
+  padding: 13px 22px;
+  width: 100%;
+  display: block;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+#nav.menu-open .nav-links li:last-child a { border-bottom: none; }
+#nav.menu-open .nav-links a:hover { color: var(--white-pure); background: rgba(255,255,255,0.04); }
 #nav.menu-open .nav-toggle span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 #nav.menu-open .nav-toggle span:nth-child(2) { opacity: 0; }
 #nav.menu-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
@@ -990,7 +1016,23 @@ ul  { list-style: none; }
   .tools-grid { grid-template-columns: repeat(4,1fr); }
 
   .project-item { grid-template-columns: 1fr; gap: 12px; padding: 32px 0; }
-  .project-meta { flex-direction: row; gap: 12px; flex-wrap: wrap; }
+  .project-meta {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 2px 12px;
+  }
+  .project-period { grid-column: 1; grid-row: 1; }
+  .project-type   { grid-column: 1; grid-row: 2; }
+  .project-logo,
+  .project-logo--square,
+  .project-logo--circle {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    margin-top: 0;
+    align-self: center;
+  }
 
   .cinepick-header { flex-direction: column; gap: 12px; }
   .cinepick-grid   { grid-template-columns: 1fr; }
