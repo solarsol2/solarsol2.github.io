@@ -948,7 +948,7 @@ ul  { list-style: none; }
 /* ================================================================
    MOBILE NAV — corner dropdown
    ================================================================ */
-#nav { position: relative; }
+#nav { position: fixed; }
 
 #nav.menu-open .nav-links {
   display: flex;
